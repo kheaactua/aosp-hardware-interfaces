@@ -19,4 +19,11 @@ interface IOpersys {
     read(sizeInBytes size) generates (Result result, string buffer);
     write(string buffer) generates (Result result);
     test(int32_t valueIn) generates (int32_t valueRet);
+
+    clear_buffer();
+    is_there_content()         generates (bool has_content);
+    get_last_write_time()      generates (int64_t write_time);
+    get_read_stat()            generates (int32_t read_stat);
+    get_write_stat()           generates (int32_t write_stat);
+    set_buffer_to_char(string ch);
 };
