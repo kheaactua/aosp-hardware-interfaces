@@ -86,7 +86,7 @@ Return<int32_t> Opersys::get_write_stat() {
     return mDevice->get_write_n();
 }
 
-Return<void> Opersys::set_buffer_to_char(const hidl_string& ch) {
+Return<void> Opersys::set_buffer_to_char(hidl_string const& ch) {
     mDevice->set_buffer_char(ch);
 
     return Void();
