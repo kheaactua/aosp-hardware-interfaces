@@ -22,7 +22,7 @@ Opersys::~Opersys() {
     delete(mDevice);
 }
 
-// Methods from IOpersys follow.
+// Methods from ::android::hardware::opersys::V2_0::IOpersys follow.
 Return<void> Opersys::read(uint32_t size, read_cb _hidl_cb) {
     char* intermediate_buffer;
     int retval;
@@ -41,7 +41,6 @@ Return<void> Opersys::read(uint32_t size, read_cb _hidl_cb) {
 
     free(intermediate_buffer);
 
-    // TODO implement
     return Void();
 }
 
@@ -55,7 +54,6 @@ Return<Result> Opersys::write(const hidl_string& buffer) {
 
     ALOGI("write() succcessfull");
 
-    // TODO implement
     return Result::OK;
 }
 
@@ -66,6 +64,33 @@ Return<int32_t> Opersys::test(int32_t valueIn) {
     return mDevice->test(valueIn);
 }
 
+Return<void> Opersys::clear_buffer() {
+    mDevice->zero_content(valueIn);
+
+    return Void();
+}
+
+Return<bool> Opersys::is_there_content() {
+    return mDevice->is_there_content();
+}
+
+Return<int64_t> Opersys::get_last_write_time() {
+    return mDevice->write_ts();
+}
+
+Return<int32_t> Opersys::get_read_stat() {
+    return mDevice->get_read_n();
+}
+
+Return<int32_t> Opersys::get_write_stat() {
+    return mDevice->get_write_n();
+}
+
+Return<void> Opersys::set_buffer_to_char(const hidl_string& ch) {
+    mDevice->set_buffer_char(ch);
+
+    return Void();
+}
 
 // Methods from ::android::hidl::base::V1_0::IBase follow.
 

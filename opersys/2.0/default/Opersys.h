@@ -28,16 +28,14 @@ struct Opersys : public IOpersys {
     Return<void> read(uint32_t size, read_cb _hidl_cb) override;
     Return<Result> write(const hidl_string& buffer) override;
     Return<int32_t> test(int32_t valueIn) override;
-
     Return<void> clear_buffer() override;
     Return<bool> is_there_content() override;
     Return<int64_t> get_last_write_time() override;
-    Return<int>  get_read_stat() override;
-    Return<int>  get_write_stat() override;
+    Return<int32_t> get_read_stat() override;
+    Return<int32_t> get_write_stat() override;
     Return<void> set_buffer_to_char(hidl_string const& ch) override;
 
     // Methods from ::android::hidl::base::V1_0::IBase follow.
-    // No v1.0 in this case -- v1.0 is the old non-HIDL version
 
   private:
     opersyshw_device_t* mDevice;
